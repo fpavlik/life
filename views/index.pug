@@ -1,0 +1,46 @@
+extends layout
+
+block content
+  .container-fluid
+    .row Defaults:
+      .col-1 Width:
+        p#w #{w}
+      .col-1 Height:
+        p#h #{h}
+    .row Config:
+      .col Max unit Age: 
+        input#maxAge(type="text", size="6", value="20")
+      .col Units amount: 
+        input#unitsAmount(type="text",  size="6", value="3")
+      .col Food amount: 
+        input#food(type="text", size="6", value="10")
+    br
+    .row
+      .col Step time: 
+        input#stepTime(type="text", size="6", value="1000")
+      .col Each unit energy: 
+        input#unitEnergy(type="text", size="6", value="20")
+      .col Each food energy: 
+        input#foodEnergy(type="text", size="6", value="5")
+    br
+    .row
+      .col.text-center
+        button#live Lets live!
+        button#stop Stop it!
+    br
+    br
+    #main
+      - var i = 1;
+      - var j = 1;
+      while i <= h
+        .row(style={height: size})
+          while j <= w
+            div.square(style={width: size, height: size, border: '1px solid black', display: 'inline-block'}, id=i+"_"+j)
+            - j++
+        - i++
+        - j = 1
+
+  script(src="/js/unit.js")
+  script(src="/js/food.js")
+  script(src="/js/tools.js")
+  script(src="/js/life.js")
